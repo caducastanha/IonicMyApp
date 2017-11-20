@@ -4,39 +4,35 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <ion-card>
-    <ion-item>
-      <ion-avatar item-start>
-        <img src="assets/imgs/avatar.png">
-      </ion-avatar>
-      <h2 class="home_title">{{ nome_usuario }}</h2>
-      <p class="home_date">November 5, 1955</p>
-    </ion-item>
+<ion-content>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
 
-    <img src="assets/imgs/advance.png">
+  <ion-card *ngFor="let filme of lista_filmes">
+    <img [src]="'https://image.tmdb.org/t/p/w500/' + filme.backdrop_path" (click)="abrirDetalhes(filme)">
 
-    <ion-card-content>
-      <p>Estou criando o goeat</p>
+    <ion-card-content (click)="abrirDetalhes(filme)">
+      <ion-card-title>
+        {{ filme.title }}
+      </ion-card-title>
+      <p>
+        {{ filme.overview }}
+      </p>
     </ion-card-content>
 
     <ion-row>
       <ion-col>
         <button ion-button icon-left clear small>
-          <ion-icon name="thumbs-up"></ion-icon>
-          <div>12 Likes</div>
+          <ion-icon name="heart"></ion-icon>
+          Amei
         </button>
       </ion-col>
       <ion-col>
         <button ion-button icon-left clear small>
-          <ion-icon name="text"></ion-icon>
-          <div>4 Comments</div>
+          <ion-icon name="star"></ion-icon>
+          Favorito
         </button>
-      </ion-col>
-      <ion-col center text-center>
-        <ion-note>
-          11h ago
-        </ion-note>
       </ion-col>
     </ion-row>
 
