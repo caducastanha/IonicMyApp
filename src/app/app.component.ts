@@ -15,7 +15,7 @@ import { ConfigProvider } from '../providers/config/config';
 })
 export class MyApp {
   rootPage:any;
-
+  firstName = "Cadu"
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, configProvider: ConfigProvider) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
